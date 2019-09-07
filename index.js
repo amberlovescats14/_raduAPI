@@ -3,8 +3,12 @@ const app = express()
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-app.get('/amber', (req, res) => {
-  res.send(`Hi Amber!`)
+app.get('/:name', (req, res) => {
+  const i = req.params.name;
+  const color = req.query.color;
+  res.send(`${i}'s favorite color is ${color}`)
+  // http://localhost:3000/amber/?color=red
+
 })
 
 //http://localhost:3000/birthday/amber?confetti=true
@@ -15,6 +19,9 @@ app.get('/birthday/:userName', (req,res) => {
     let confetti = hasConfetti ? '(_#@&%)$%*^@#$)' : ''
     res.send(`${confetti}  Hello ${userName}   ${confetti}`)
 })
+
+
+
 
 // app.post('/', async (req, res) => {
 //   try {
